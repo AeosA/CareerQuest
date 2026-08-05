@@ -20,6 +20,8 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("login/", include("cq_login.urls")),
-    path('', views.db_version, name='db_version'),
+    path('login/', include("cq_login.urls")),
+    path('register/', include("cq_register.urls")),
+    path('', views.HomeView, name='Home'),
+    path('setup/', include("cq_accountsetup.urls")),
 ]

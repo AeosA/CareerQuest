@@ -1,0 +1,152 @@
+{% load static %}
+<!DOCTYPE HTML>
+<!--
+	Stellar by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Account Setup</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static 'css/main.css' %}" />
+		<noscript><link rel="stylesheet" href="{% static 'css/noscript.css' %}" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header" class="alt">
+						<span class="logo"><img src="{% static 'images/logo.svg' %}" alt="" /></span>
+						<h1>Let's setup your account!</h1>
+
+						<!--------------------Career goal form----------------------------->
+						<form action="" method="post">
+							{% csrf_token %}
+							<p>What career will you aim for?</p>
+							<div class="skill-options">
+								{% for roles in careerform.role_options %}
+									<span class = "skill-option">
+										{{roles.tag}}
+										<label class = "button" for="{{roles.id_for_label}}">
+											{{roles.choice_label}}
+										</label>
+									</span>
+								{% endfor %}
+							</div>
+							<button type="submit" name="choosecareer">Submit</button>
+							
+						</form>
+						
+						<!--------------------User's current skill form---------------------->
+						<form action="" method="post">
+							{% csrf_token %}
+
+							<p>What skills do you have?</p>
+
+							<div class="skill-options">
+								{% for skills in skillform.skill_options %}
+									<span class="skill-option">
+										{{ skills.tag }}
+										<label class="button" for="{{ skills.id_for_label }}">
+											{{ skills.choice_label }}
+										</label>
+									</span>
+								{% endfor %}
+							</div>
+
+							<button type="submit" name="addskill">Submit</button>
+						</form>
+						
+						<p>What skills do you have?<br></p>
+						<p>
+						{%for skills in skillform.skill_options%}
+						<button>{{skills}}</button>
+						{% endfor %}
+						</p>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul>
+							<li><a href="#intro" class="active">Introduction</a></li>
+							<li><a href="#first">First Section</a></li>
+							<li><a href="#second">Second Section</a></li>
+							<li><a href="#cta">Get Started</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Introduction -->
+							<section id="intro" class="main">
+								<div class="spotlight">
+									<div class="content">
+										<header class="major">
+											<h2>Tranforming Your Career Goals into a Guided Roadmap</h2>
+										</header>
+										<p>CareerQuest helps aspiring professionals bridge the gap between 
+										where they currently are and where they want to be for their career by identifying skill gaps, 
+										discovering career opportunities, and providing personalized recommendations 
+										for the next step in their journey.</p>
+										<ul class="actions">
+											<li><a href="generic.html" class="button">Learn More</a></li>
+										</ul>
+									</div>
+									<span class="image"><img src="{%static 'images/skilltree.jpg' %}" alt="" /></span>
+								</div>
+							</section>
+
+						<!-- First Section -->
+							<section id="first" class="main special">
+								<header class="major">
+									<h2>Discover Your Skill Gaps</h2>
+								</header>
+								<ul class="features">
+									<li>
+										<span class="icon solid major style1 fa-code"></span>
+										<h3>Start with your destination</h3>
+										<p><b>Choose the career you're pursuing.</b><br />Whether 
+											you're a student entering the workforce, pursuing a promotion, or transitioning into a new field,
+											CareerQuest starts with your destination and work backwards to build your path forward. </p>
+									</li>
+									<li>
+										<span class="icon major style3 fa-copy"></span>
+										<h3>Know Where You Stand</h3>
+										<p><b>Upload your resume</b> or <b>Enter your current skills, experience
+											and qualifications</b> and we will help you discover the gap between 
+											where you are and where you want to be for your career. </p>
+									</li>
+									<li>
+										<span class="icon major style5 fa-gem"></span>
+										<h3>Chart Your Path Forward</h3>
+										<p>Receive personalized recommendations tailored to your goals and current experience level.</p>
+									</li>
+								</ul>
+								<footer class="major">
+									<ul class="actions special">
+										<li><a href="generic.html" class="button">Learn More</a></li>
+									</ul>
+								</footer>
+							</section>
+
+				<!-- Footer -->
+					<footer id="footer">
+					</footer>
+			</div>
+
+		<!-- Scripts -->
+			<script src="{% static 'js/jquery.min.js' %}"></script>
+			<script src="{% static 'js/jquery.scrollex.min.js' %}"></script>
+			<script src="{% static 'js/jquery.scrolly.min.js' %}"></script>
+			<script src="{% static 'js/browser.min.js' %}"></script>
+			<script src="{% static 'js/breakpoints.min.js' %}"></script>
+			<script src="{% static 'js/util.js' %}"></script>
+			<script src="{% static 'js/main.js' %}"></script>
+
+	</body>
+</html>
